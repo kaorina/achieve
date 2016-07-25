@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h3>この内容で登録しますか？</h3>
+    <%= form_for(@contact) do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :content %>
+      <p>Name: <%= @contact.name %></p>
+      <p>Email: <%= @contact.email %></p>
+      <p>Contents: <%= @contact.content %></p>
+      <%= f.submit "登録する", class: 'btn btn-primary btn-block' %>
+    <% end %> 
+    <%= form_for(@contact, url: new_contact_path, method: 'get') do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :content %>
+      <%= f.submit "戻る", name: 'back', class: 'btn btn-default btn-block'  %>
+    <% end %>
+  </div>
+</div>  
