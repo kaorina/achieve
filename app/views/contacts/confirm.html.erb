@@ -5,9 +5,9 @@
       <%= f.hidden_field :name %>
       <%= f.hidden_field :email %>
       <%= f.hidden_field :content %>
-      <p>Name: <%= @contact.name %></p>
-      <p>Email: <%= @contact.email %></p>
-      <p>Contents: <%= @contact.content %></p>
+      <p>名前: <%= @contact.name %></p>
+      <p>メールアドレス: <%= @contact.email %></p>
+      <p>内容: <%= @contact.content %></p>
       <%= f.submit "登録する", class: 'btn btn-primary btn-block' %>
     <% end %> 
     <%= form_for(@contact, url: new_contact_path, method: 'get') do |f| %>
