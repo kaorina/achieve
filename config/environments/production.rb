@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Sendgridのsetting for heroku
-  config.action_mailer.default_url_options = { host: 'diveintocode-achieve-kaori.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'dic-achieve-kaori.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
