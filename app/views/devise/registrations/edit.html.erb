@@ -16,21 +16,31 @@
         <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
       </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-      <br />
-      <div class="field">
-        <p>パスワードを変更する場合は下記を入力してください</p>
-        <% ps_password =  "新しいパスワード" %>
-        <% if @minimum_password_length %>
-          <% ps_password =  "新しいパスワード（" + @minimum_password_length.to_s + "文字以内）"%>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: ps_password %>
-      </div>
+      <% if @user.provider.blank? %>
 
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+        <br />
+        <div class="field">
+          <p>パスワードを変更する場合は下記を入力してください</p>
+          <% ps_password =  "新しいパスワード" %>
+          <% if @minimum_password_length %>
+            <% ps_password =  "新しいパスワード（" + @minimum_password_length.to_s + "文字以内）"%>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: ps_password %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード（確認用）" %>
+        </div>
+
+      <% end %>
+      
       <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード（確認用）" %>
+        <%= profile_img(@user) if profile_img(@user) %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
       </div>
 
       <div class="actions">

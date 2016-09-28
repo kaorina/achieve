@@ -29,6 +29,10 @@ gem 'omniauth-facebook'
 gem 'rails_admin'
 gem 'cancan'
 
+# image_uploader
+gem 'carrierwave'
+gem 'rmagick'
+
 group :development do
   gem 'letter_opener'
   gem 'dotenv-rails'
