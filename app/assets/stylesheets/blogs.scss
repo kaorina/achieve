@@ -12,7 +12,23 @@
 input[type="submit"].btn-block{
   margin: 15px 0;
 }
+/*************************************
+MIXINS
+*************************************/
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
 
-.posted_name {
+.posted_user {
   color: #336699;
+  padding-bottom: 20px;
+  img {
+    width: 50px;
+    hight: 50px;
+    @include vendor-prefix(border-radius, 50%);
+  }
 }

@@ -4,11 +4,18 @@
       <%= link_to "ブログを作成する", new_blog_path %>
     <% @blogs.each do |blog| %>
     <div class="row">
+      <div class="posted_user">
+        <%= profile_img(blog.user) if profile_img(blog.user) %>
+      </i><%= blog.user.try(:name) || '名無し' %>が投稿しました
+      </div>
       <h4><strong><%= blog.title %></strong></h4>
       <p><%= blog.content %></p>
-      <p class="posted_name"><i class="fa fa-user fa-lg icon_index">&nbsp;</i><%= blog.user.try(:name) || '名無し' %></p>
-      <%= link_to "ブログを編集する", edit_blog_path(blog.id) %>
-      <%= link_to "ブログを削除する", blog_path(blog), method: :delete, data: { confirm: '本当に編集していいですか？' } %>
+      <%= link_to edit_blog_path(blog.id) do %>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to blog_path(blog), method: :delete, data: { confirm: '本当に削除していいですか？' } do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
     </div>
     <% end %>
   </div>

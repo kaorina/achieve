@@ -12,5 +12,8 @@
 !/log/.keep
 /tmp
 
-#dotenv-rails
+# dotenv-rails
 .env
+
+# public
+public/uploads/*
