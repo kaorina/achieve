@@ -42,8 +42,11 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    if @blog.destroy
-      redirect_to blogs_path, notice: "ブログを削除しました！"
+    respond_to do |format|
+      if @blog.destroy
+        format.html { redirect_to blog_path(@blog), notice: 'コメントを削除しました' }
+        format.json { render :show, status::created, location: @comment }
+      end
     end
   end
 
